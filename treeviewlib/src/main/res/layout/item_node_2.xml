@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="?selectableItemBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_expand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/selector_arrow_expand"/>
+
+    <TextView
+        android:id="@+id/tv_node2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="24dp"
+        android:textColor="#222222"
+        android:textSize="16sp"
+        tools:text="益阳市" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:background="#efefef" />
+</FrameLayout>

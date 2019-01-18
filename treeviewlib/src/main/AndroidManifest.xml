@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cj.treeviewlib">
+
+    <application>
+        <activity
+            android:name="com.cj.treeviewlib.TreeViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TreeViewTheme" />
+    </application>
+</manifest>
