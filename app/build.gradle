@@ -21,7 +21,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':treeviewlib')
-//    implementation 'com.github.caijia:TreeView:2f2386cdd5'
+//    implementation 'com.github.caijia:TreeView:24b9090ee8'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.caijia:adapterdelegate:1.0.6'

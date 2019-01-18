@@ -137,10 +137,8 @@ public class TreeViewActivity extends AppCompatActivity {
 
         //恢复原始状态收缩
         if (TextUtils.isEmpty(searchText)) {
-            for (NodeBean rootNode : rootNodes) {
-                rootNode.setExpand(false);
-            }
-            return rootNodes;
+            sourceNodeList = parser(idKey, nameKey, pIdKey, expandKey,json);
+            return sourceNodeList;
         }
 
         List<Node> filterList = new ArrayList<>();
