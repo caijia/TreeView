@@ -29,22 +29,25 @@ public class TreeViewActivity extends AppCompatActivity {
     private static final String EXTRA_KEY_ID = "extra:keyId";
     private static final String EXTRA_KEY_NAME = "extra:keyName";
     private static final String EXTRA_KEY_PID_KEY = "extra:keyPId";
+    private static final String EXTRA_KEY_EXPAND = "extra:keyExpand";
     private static final String EXTRA_JSON = "extra:json";
     private String title;
     private String idKey;
     private String nameKey;
     private String pIdKey;
+    private String expandKey;
     private String json;
     private TreeAdapter treeAdapter;
     private List<NodeBean> rootNodes;
 
     public static Intent getIntent(Context context, String title, String idKey, String nameKey,
-                                   String pIdKey, String json) {
+                                   String pIdKey, String expandKey,String json) {
         Intent intent = new Intent(context, TreeViewActivity.class);
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_KEY_ID, idKey);
         intent.putExtra(EXTRA_KEY_NAME, nameKey);
         intent.putExtra(EXTRA_KEY_PID_KEY, pIdKey);
+        intent.putExtra(EXTRA_KEY_EXPAND, expandKey);
         intent.putExtra(EXTRA_JSON, json);
         return intent;
     }
@@ -58,6 +61,7 @@ public class TreeViewActivity extends AppCompatActivity {
         idKey = args.getString(EXTRA_KEY_ID);
         nameKey = args.getString(EXTRA_KEY_NAME);
         pIdKey = args.getString(EXTRA_KEY_PID_KEY);
+        expandKey = args.getString(EXTRA_KEY_EXPAND);
         json = args.getString(EXTRA_JSON);
     }
 
@@ -92,7 +96,7 @@ public class TreeViewActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(treeAdapter);
 
-        sourceNodeList = parser(idKey, nameKey, pIdKey, json);
+        sourceNodeList = parser(idKey, nameKey, pIdKey, expandKey,json);
         treeAdapter.updateItems(sourceNodeList);
     }
 
@@ -222,7 +226,7 @@ public class TreeViewActivity extends AppCompatActivity {
         return filterList;
     }
 
-    private List<Node> parser(String idKey, String nameKey, String pIdKey, String json) {
+    private List<Node> parser(String idKey, String nameKey, String pIdKey, String expandKey,String json) {
         try {
             JSONArray array = new JSONArray(json);
             int length = array.length();
@@ -233,7 +237,7 @@ public class TreeViewActivity extends AppCompatActivity {
                 nodeBean.setId(jsonObject.optString(idKey));
                 nodeBean.setpId(jsonObject.optString(pIdKey));
                 nodeBean.setName(jsonObject.optString(nameKey));
-                nodeBean.setExpand(jsonObject.optBoolean("expand"));
+                nodeBean.setExpand(jsonObject.optBoolean(expandKey));
                 nodeBean.setActualData(jsonObject.toString());
                 list.add(nodeBean);
             }
