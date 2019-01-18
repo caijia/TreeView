@@ -135,8 +135,12 @@ public class TreeViewActivity extends AppCompatActivity {
             return Collections.emptyList();
         }
 
+        //恢复原始状态收缩
         if (TextUtils.isEmpty(searchText)) {
-            return sourceNodeList;
+            for (NodeBean rootNode : rootNodes) {
+                rootNode.setExpand(false);
+            }
+            return rootNodes;
         }
 
         List<Node> filterList = new ArrayList<>();
