@@ -7,7 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.cj.treeviewlib.NodeBean;
 import com.cj.treeviewlib.TreeViewActivity;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,8 +30,31 @@ public class MainActivity extends AppCompatActivity {
     String json = "[{\"expand\":false,\"id\":\"100\",\"name\":\"湖南省\",\"pId\":\"-1\",\"type\":0},{\"expand\":true,\"id\":\"0\",\"name\":\"益阳市\",\"pId\":\"100\",\"type\":0},{\"expand\":false,\"id\":\"0\",\"name\":\"资阳区\",\"pId\":\"0\",\"type\":0},{\"expand\":false,\"id\":\"10000\",\"name\":\"资阳区\",\"pId\":\"0\",\"type\":0},{\"expand\":false,\"id\":\"20000\",\"name\":\"资阳区\",\"pId\":\"0\",\"type\":0},{\"expand\":false,\"id\":\"30000\",\"name\":\"资阳区\",\"pId\":\"0\",\"type\":0},{\"expand\":false,\"id\":\"1000\",\"name\":\"益阳市\",\"pId\":\"100\",\"type\":0},{\"expand\":false,\"id\":\"1000\",\"name\":\"资阳区\",\"pId\":\"1000\",\"type\":0},{\"expand\":false,\"id\":\"11000\",\"name\":\"资阳区\",\"pId\":\"1000\",\"type\":0},{\"expand\":false,\"id\":\"21000\",\"name\":\"资阳区\",\"pId\":\"1000\",\"type\":0},{\"expand\":false,\"id\":\"31000\",\"name\":\"资阳区\",\"pId\":\"1000\",\"type\":0},{\"expand\":false,\"id\":\"2000\",\"name\":\"益阳市\",\"pId\":\"100\",\"type\":0},{\"expand\":false,\"id\":\"2000\",\"name\":\"资阳区\",\"pId\":\"2000\",\"type\":0},{\"expand\":false,\"id\":\"12000\",\"name\":\"资阳区\",\"pId\":\"2000\",\"type\":0},{\"expand\":false,\"id\":\"22000\",\"name\":\"资阳区\",\"pId\":\"2000\",\"type\":0},{\"expand\":false,\"id\":\"32000\",\"name\":\"资阳区\",\"pId\":\"2000\",\"type\":0},{\"expand\":false,\"id\":\"3000\",\"name\":\"益阳市\",\"pId\":\"100\",\"type\":0},{\"expand\":false,\"id\":\"3000\",\"name\":\"资阳区\",\"pId\":\"3000\",\"type\":0},{\"expand\":false,\"id\":\"13000\",\"name\":\"资阳区\",\"pId\":\"3000\",\"type\":0},{\"expand\":false,\"id\":\"23000\",\"name\":\"资阳区\",\"pId\":\"3000\",\"type\":0},{\"expand\":false,\"id\":\"33000\",\"name\":\"资阳区\",\"pId\":\"3000\",\"type\":0},{\"expand\":false,\"id\":\"101\",\"name\":\"湖南省\",\"pId\":\"-1\",\"type\":0},{\"expand\":false,\"id\":\"1\",\"name\":\"益阳市\",\"pId\":\"101\",\"type\":0},{\"expand\":false,\"id\":\"1\",\"name\":\"资阳区\",\"pId\":\"1\",\"type\":0},{\"expand\":false,\"id\":\"10001\",\"name\":\"资阳区\",\"pId\":\"1\",\"type\":0},{\"expand\":false,\"id\":\"20001\",\"name\":\"资阳区\",\"pId\":\"1\",\"type\":0},{\"expand\":false,\"id\":\"30001\",\"name\":\"资阳区\",\"pId\":\"1\",\"type\":0},{\"expand\":false,\"id\":\"1001\",\"name\":\"益阳市\",\"pId\":\"101\",\"type\":0},{\"expand\":false,\"id\":\"1001\",\"name\":\"资阳区\",\"pId\":\"1001\",\"type\":0},{\"expand\":false,\"id\":\"11001\",\"name\":\"资阳区\",\"pId\":\"1001\",\"type\":0},{\"expand\":false,\"id\":\"21001\",\"name\":\"资阳区\",\"pId\":\"1001\",\"type\":0},{\"expand\":false,\"id\":\"31001\",\"name\":\"资阳区\",\"pId\":\"1001\",\"type\":0},{\"expand\":false,\"id\":\"2001\",\"name\":\"益阳市\",\"pId\":\"101\",\"type\":0},{\"expand\":false,\"id\":\"2001\",\"name\":\"资阳区\",\"pId\":\"2001\",\"type\":0},{\"expand\":false,\"id\":\"12001\",\"name\":\"资阳区\",\"pId\":\"2001\",\"type\":0},{\"expand\":false,\"id\":\"22001\",\"name\":\"资阳区\",\"pId\":\"2001\",\"type\":0},{\"expand\":false,\"id\":\"32001\",\"name\":\"资阳区\",\"pId\":\"2001\",\"type\":0},{\"expand\":false,\"id\":\"3001\",\"name\":\"益阳市\",\"pId\":\"101\",\"type\":0},{\"expand\":false,\"id\":\"3001\",\"name\":\"资阳区\",\"pId\":\"3001\",\"type\":0},{\"expand\":false,\"id\":\"13001\",\"name\":\"资阳区\",\"pId\":\"3001\",\"type\":0},{\"expand\":false,\"id\":\"23001\",\"name\":\"资阳区\",\"pId\":\"3001\",\"type\":0},{\"expand\":false,\"id\":\"33001\",\"name\":\"资阳区\",\"pId\":\"3001\",\"type\":0},{\"expand\":false,\"id\":\"102\",\"name\":\"湖南省\",\"pId\":\"-1\",\"type\":0},{\"expand\":false,\"id\":\"2\",\"name\":\"益阳市\",\"pId\":\"102\",\"type\":0},{\"expand\":false,\"id\":\"2\",\"name\":\"资阳区\",\"pId\":\"2\",\"type\":0},{\"expand\":false,\"id\":\"10002\",\"name\":\"资阳区\",\"pId\":\"2\",\"type\":0},{\"expand\":false,\"id\":\"20002\",\"name\":\"资阳区\",\"pId\":\"2\",\"type\":0},{\"expand\":false,\"id\":\"30002\",\"name\":\"资阳区\",\"pId\":\"2\",\"type\":0},{\"expand\":false,\"id\":\"1002\",\"name\":\"益阳市\",\"pId\":\"102\",\"type\":0},{\"expand\":false,\"id\":\"1002\",\"name\":\"资阳区\",\"pId\":\"1002\",\"type\":0},{\"expand\":false,\"id\":\"11002\",\"name\":\"资阳区\",\"pId\":\"1002\",\"type\":0},{\"expand\":false,\"id\":\"21002\",\"name\":\"资阳区\",\"pId\":\"1002\",\"type\":0},{\"expand\":false,\"id\":\"31002\",\"name\":\"资阳区\",\"pId\":\"1002\",\"type\":0},{\"expand\":false,\"id\":\"2002\",\"name\":\"益阳市\",\"pId\":\"102\",\"type\":0},{\"expand\":false,\"id\":\"2002\",\"name\":\"资阳区\",\"pId\":\"2002\",\"type\":0},{\"expand\":false,\"id\":\"12002\",\"name\":\"资阳区\",\"pId\":\"2002\",\"type\":0},{\"expand\":false,\"id\":\"22002\",\"name\":\"资阳区\",\"pId\":\"2002\",\"type\":0},{\"expand\":false,\"id\":\"32002\",\"name\":\"资阳区\",\"pId\":\"2002\",\"type\":0},{\"expand\":false,\"id\":\"3002\",\"name\":\"益阳市\",\"pId\":\"102\",\"type\":0},{\"expand\":false,\"id\":\"3002\",\"name\":\"资阳区\",\"pId\":\"3002\",\"type\":0},{\"expand\":false,\"id\":\"13002\",\"name\":\"资阳区\",\"pId\":\"3002\",\"type\":0},{\"expand\":false,\"id\":\"23002\",\"name\":\"资阳区\",\"pId\":\"3002\",\"type\":0},{\"expand\":false,\"id\":\"33002\",\"name\":\"资阳区\",\"pId\":\"3002\",\"type\":0},{\"expand\":false,\"id\":\"103\",\"name\":\"湖南省\",\"pId\":\"-1\",\"type\":0},{\"expand\":false,\"id\":\"3\",\"name\":\"益阳市\",\"pId\":\"103\",\"type\":0},{\"expand\":false,\"id\":\"3\",\"name\":\"资阳区\",\"pId\":\"3\",\"type\":0},{\"expand\":false,\"id\":\"10003\",\"name\":\"资阳区\",\"pId\":\"3\",\"type\":0},{\"expand\":false,\"id\":\"20003\",\"name\":\"资阳区\",\"pId\":\"3\",\"type\":0},{\"expand\":false,\"id\":\"30003\",\"name\":\"资阳区\",\"pId\":\"3\",\"type\":0},{\"expand\":false,\"id\":\"1003\",\"name\":\"益阳市\",\"pId\":\"103\",\"type\":0},{\"expand\":false,\"id\":\"1003\",\"name\":\"资阳区\",\"pId\":\"1003\",\"type\":0},{\"expand\":false,\"id\":\"11003\",\"name\":\"资阳区\",\"pId\":\"1003\",\"type\":0},{\"expand\":false,\"id\":\"21003\",\"name\":\"资阳区\",\"pId\":\"1003\",\"type\":0},{\"expand\":false,\"id\":\"31003\",\"name\":\"资阳区\",\"pId\":\"1003\",\"type\":0},{\"expand\":false,\"id\":\"2003\",\"name\":\"益阳市\",\"pId\":\"103\",\"type\":0},{\"expand\":false,\"id\":\"2003\",\"name\":\"资阳区\",\"pId\":\"2003\",\"type\":0},{\"expand\":false,\"id\":\"12003\",\"name\":\"资阳区\",\"pId\":\"2003\",\"type\":0},{\"expand\":false,\"id\":\"22003\",\"name\":\"资阳区\",\"pId\":\"2003\",\"type\":0},{\"expand\":false,\"id\":\"32003\",\"name\":\"资阳区\",\"pId\":\"2003\",\"type\":0},{\"expand\":false,\"id\":\"3003\",\"name\":\"益阳市\",\"pId\":\"103\",\"type\":0},{\"expand\":false,\"id\":\"3003\",\"name\":\"资阳区\",\"pId\":\"3003\",\"type\":0},{\"expand\":false,\"id\":\"13003\",\"name\":\"资阳区\",\"pId\":\"3003\",\"type\":0},{\"expand\":false,\"id\":\"23003\",\"name\":\"资阳区\",\"pId\":\"3003\",\"type\":0},{\"expand\":false,\"id\":\"33003\",\"name\":\"资阳区\",\"pId\":\"3003\",\"type\":0}]";
 
     public void treeview(View view) {
+        String json = dumpJson();
         Intent i = TreeViewActivity.getIntent(this, "城市", idKey, nameKey, pIdKey, expandKey,json);
         startActivityForResult(i, 200);
+    }
+
+    private String dumpJson() {
+        NodeBean node1 = new NodeBean("湖南省", 0, "1", "-1");
+
+        NodeBean node2 = new NodeBean("益阳市", 0, "11", "1");
+        NodeBean node3 = new NodeBean("长沙市", 0, "12", "1");
+
+        NodeBean node5 = new NodeBean("天心区", 0, "101", "12");
+        NodeBean node6 = new NodeBean("开福区", 0, "102", "12");
+        NodeBean node7 = new NodeBean("岳麓区", 0, "103", "12");
+
+        NodeBean node8 = new NodeBean("湖北省", 0, "2", "-1");
+        List<NodeBean> list = new ArrayList<>();
+        list.add(node1);
+        list.add(node2);
+        list.add(node3);
+        list.add(node5);
+        list.add(node6);
+        list.add(node7);
+        list.add(node8);
+        return new Gson().toJson(list);
     }
 
     @Override

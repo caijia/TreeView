@@ -12,6 +12,16 @@ public class NodeBean implements Node {
     private String actualData;
     private List<Node> child;
 
+    public NodeBean(String name, int type, String id, String pId) {
+        this.name = name;
+        this.type = type;
+        this.id = id;
+        this.pId = pId;
+    }
+
+    public NodeBean() {
+    }
+
     public void setId(String id) {
         this.id = id;
     }

@@ -13,6 +13,12 @@ import java.util.List;
 
 public class Node2Delegate extends ItemViewDelegate<Node, Node2Delegate.Tree1VH> {
 
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
     @Override
     public Tree1VH onCreateViewHolder(LayoutInflater inflater, ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_node_2, parent, false);
@@ -24,6 +30,8 @@ public class Node2Delegate extends ItemViewDelegate<Node, Node2Delegate.Tree1VH>
                                  Tree1VH holder, int position) {
         holder.tvName.setText(node.name());
         holder.tvExpand.setSelected(node.expand());
+        boolean hasChild = node.getChild() != null && !node.getChild().isEmpty();
+        holder.tvExpand.setVisibility(hasChild ? View.VISIBLE : View.INVISIBLE);
         holder.setExtra((List<Object>) dataSource, adapter, node);
         holder.itemView.setOnClickListener(holder);
     }
@@ -56,6 +64,9 @@ public class Node2Delegate extends ItemViewDelegate<Node, Node2Delegate.Tree1VH>
         public void onClick(View v) {
             List<Node> child = node.getChild();
             if (child == null || child.isEmpty()) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(v, node.actualData(), getAdapterPosition());
+                }
                 return;
             }
 
